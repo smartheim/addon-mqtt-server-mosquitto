@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  ohx-addon-mqtt-server-mosquitto:
+    build_cmd: sh build.sh
+    ports:
+    - "1883:1883"
+    - "9001:9001"
+    volumes:
+    - /var/ohx/certs:/certs
+
+x-ohx-registry:
+  id: ohx-addon-mqtt-server-mosquitto
+  version: "0.1.0"
+  type: service
+  license: "EPL 2.0"
+  authors: ["David Gräff", "Eclipse Mosquitto Team"]
+  title: "Eclipse Mosquitto MQTT Server"
+  description: "An MQTT Server with OHX Auth plugin"
+  status:
+    code: AVAILABLE
+  homepage: "https://github.com/openhab-nodes/addon-mqtt-server-mosquitto"
+  github: "https://github.com/openhab-nodes/addon-mqtt-server-mosquitto"
+
+x-runtime:
+  memory_min: 10
+  memory_max: 50

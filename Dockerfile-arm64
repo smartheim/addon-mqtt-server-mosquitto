@@ -1,0 +1,6 @@
+FROM eclipse-mosquitto@sha256:13bbfbbc3ed64fe2dbafafd740790686ac1b3d9045fbd8fd964115718b4817b5
+COPY mosquitto-jwt-auth/target/aarch64-unknown-linux-musl/release/libmosquitto_jwt_auth.so /
+COPY mosquitto.conf /mosquitto/config/mosquitto.conf
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["/usr/sbin/mosquitto" "-c" "/mosquitto/config/mosquitto.conf"]
+ENTRYPOINT ["/bin"]
